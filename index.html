@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#b9edf2">
+  <title>Khỉ Leo Dây - Vượt Rừng Hái Chuối</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="questions.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="game-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Khỉ Leo Dây - Trang chủ">
+        <span class="brand-mark" aria-hidden="true">🐒</span>
+        <span><strong>KHỈ LEO DÂY</strong><small>Vượt rừng hái chuối</small></span>
+      </a>
+      <div class="top-actions">
+        <div class="stage-counter" aria-live="polite"><span class="counter-dot"></span><span id="stage-label">Sẵn sàng vào rừng</span></div>
+        <button class="sound-button" id="sound-toggle" type="button" aria-label="Tắt âm thanh và nhạc nền" title="Bật hoặc tắt âm thanh">🔊</button>
+        <button class="menu-button" id="menu-button" type="button" aria-label="Mở menu" title="Menu trò chơi"><span></span><span></span><span></span></button>
+      </div>
+    </header>
+
+    <section class="game-layout" aria-label="Trò chơi Khỉ Leo Dây">
+      <div class="jungle-frame">
+        <div class="sky-details" aria-hidden="true"><span class="cloud cloud-one"></span><span class="cloud cloud-two"></span><span class="bird bird-one">⌁</span><span class="bird bird-two">⌁</span></div>
+        <div class="sun" aria-hidden="true"></div>
+        <div class="back-hills" aria-hidden="true"></div>
+        <div class="jungle-title"><span class="eyebrow" id="jungle-eyebrow">RỪNG NHIỆT ĐỚI • KHÁM PHÁ</span><h1 id="jungle-title">Chuyến leo <em>đỉnh rừng</em></h1></div>
+
+        <div class="playfield" id="playfield" aria-label="Đường leo gồm bốn dây leo">
+          <div class="vine vine-1"><i></i><b>01</b></div>
+          <div class="vine vine-2"><i></i><b>02</b></div>
+          <div class="vine vine-3"><i></i><b>03</b></div>
+          <div class="vine vine-4"><i></i><b>04</b></div>
+          <div class="vine-creatures" aria-hidden="true"><span class="vine-creature">🐸</span><span class="vine-creature">🦜</span><span class="vine-creature">🦎</span><span class="vine-creature">🐢</span></div>
+          <div class="platform platform-bottom"><span>ĐIỂM XUẤT PHÁT</span></div>
+          <div class="platform platform-top"><span class="treasure" id="treasure" aria-label="Chùm chuối">🍌</span></div>
+          <span class="bush bush-left" aria-hidden="true">🌿</span><span class="bush bush-right" aria-hidden="true">🌴</span>
+          <span class="butterfly" aria-hidden="true">🦋</span>
+          <div class="monkey" id="monkey" role="img" aria-label="Nhân vật đang ở chân dây leo"><span id="monkey-emoji">🐒</span><i class="monkey-shadow"></i></div>
+          <div class="animal" id="animal" aria-hidden="true"><span id="animal-emoji">🦜</span><small id="animal-name">Vẹt xanh</small></div>
+          <div class="float-leaf leaf-a" aria-hidden="true">✦</div><div class="float-leaf leaf-b" aria-hidden="true">✿</div>
+          <section class="setup-card" id="setup-card" aria-labelledby="setup-title">
+            <div class="setup-heading"><span class="setup-emoji">🌿</span><div><p class="eyebrow">NHÀ THÁM HIỂM NHÍ</p><h2 id="setup-title">Chọn chuyến phiêu lưu</h2></div></div>
+            <aside class="game-intro" aria-labelledby="intro-title">
+              <h3 id="intro-title">Cách chơi</h3>
+              <p>Trả lời 10 câu, chọn A–D: đúng được 1 điểm.</p>
+              <p>Sai hoặc hết giờ mất 1 tim; hết 3 tim là thua.</p>
+              <p>Mức Khó: 30 giây cho mỗi câu.</p>
+            </aside>
+            <label class="name-label" for="player-name">Tên người chơi</label>
+            <input id="player-name" class="name-input" type="text" maxlength="18" placeholder="Ví dụ: Minh Anh" autocomplete="nickname" required>
+            <fieldset class="selection-group avatar-group"><legend>Chọn bạn đồng hành</legend>
+              <div class="avatar-grid">
+                <label class="avatar-option"><input type="radio" name="player-animal" value="🐒" checked><span>🐒</span><strong>Khỉ</strong></label>
+                <label class="avatar-option"><input type="radio" name="player-animal" value="🦊"><span>🦊</span><strong>Cáo</strong></label>
+                <label class="avatar-option"><input type="radio" name="player-animal" value="🐼"><span>🐼</span><strong>Gấu trúc</strong></label>
+                <label class="avatar-option"><input type="radio" name="player-animal" value="🐰"><span>🐰</span><strong>Thỏ</strong></label>
+                <label class="avatar-option"><input type="radio" name="player-animal" value="🐱"><span>🐱</span><strong>Mèo</strong></label>
+              </div>
+            </fieldset>
+            <fieldset class="selection-group"><legend>Chọn màn chơi</legend>
+              <div class="subject-grid">
+                <label class="subject-option"><input type="radio" name="subject" value="english" checked><span class="subject-icon">🔤</span><strong>Anh</strong></label>
+                <label class="subject-option"><input type="radio" name="subject" value="math"><span class="subject-icon">📐</span><strong>Toán</strong></label>
+                <label class="subject-option"><input type="radio" name="subject" value="it"><span class="subject-icon">💻</span><strong>Tin</strong></label>
+                <label class="subject-option"><input type="radio" name="subject" value="literature"><span class="subject-icon">📚</span><strong>Văn</strong></label>
+                <label class="subject-option"><input type="radio" name="subject" value="science"><span class="subject-icon">⚗️</span><strong>Hóa - Lý</strong></label>
+              </div>
+            </fieldset>
+            <fieldset class="selection-group difficulty-group"><legend>Độ khó</legend>
+              <div class="difficulty-options">
+                <label><input type="radio" name="difficulty" value="easy" checked><span>Dễ</span></label>
+                <label><input type="radio" name="difficulty" value="medium"><span>Trung bình</span></label>
+                <label><input type="radio" name="difficulty" value="hard"><span>Khó <small>30 giây/câu</small></span></label>
+              </div>
+            </fieldset>
+            <button class="primary-button" id="start-button" type="button">Vào rừng chơi <span aria-hidden="true">↗</span></button>
+          </section>
+          <section class="question-card" id="question-card" aria-live="polite" aria-labelledby="question-title" hidden>
+            <div class="question-topline"><span class="question-badge" id="question-topic">THỬ THÁCH</span><span class="question-number" id="question-number">CÂU 1 / 10</span></div>
+            <h2 id="question-title"></h2>
+            <div class="timer-box" id="timer-box" hidden><span>⏱</span><div class="timer-track"><i id="timer-fill"></i></div><strong id="timer-value">30</strong></div>
+            <div class="answers" id="answers"></div>
+            <p class="feedback" id="feedback" role="status" hidden></p>
+            <button class="continue-button" id="continue-button" type="button" hidden>Câu tiếp theo <span aria-hidden="true">→</span></button>
+          </section>
+          <div class="end-card" id="end-card" hidden>
+            <span class="end-emoji" id="end-emoji">🎉</span><p class="eyebrow" id="end-eyebrow">ĐÍCH ĐẾN</p>
+            <h2 id="end-title">Chúc mừng!</h2><p id="end-message"></p>
+            <div class="end-actions">
+              <button class="primary-button" id="restart-button" type="button">Chơi lại <span aria-hidden="true">↻</span></button>
+              <button class="exit-end-button" id="end-exit-button" type="button">Thoát <span aria-hidden="true">⌂</span></button>
+            </div>
+          </div>
+        </div>
+        <div class="foreground-leaves" aria-hidden="true"><span>🌿</span><span>🍃</span><span>🌿</span></div>
+      </div>
+
+      <aside class="side-panel" aria-label="Thông tin trò chơi">
+        <section class="status-block">
+          <div class="section-heading"><span>THẺ NHÀ THÁM HIỂM</span><span class="tiny-sparkle">✳</span></div>
+          <div class="player-card"><span class="player-avatar" id="player-avatar">🐒</span><div><strong id="player-label">Người chơi</strong><small id="selection-label">Chọn môn và độ khó</small></div></div>
+          <div class="score-row"><div><span>ĐIỂM</span><strong id="score-display">0 <small>/ 10</small></strong></div><div class="hearts" id="hearts" aria-label="Còn 3 trái tim">❤️❤️❤️</div></div>
+          <div class="progress-heading"><span>Câu hỏi</span><span id="progress-text">0 / 10</span></div>
+          <div class="progress-track" role="progressbar" aria-label="Tiến độ trò chơi" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0"><span id="progress-bar"></span></div>
+        </section>
+        <section class="controls-block">
+          <div class="section-heading"><span>LUẬT RỪNG XANH</span><span class="key-hint">10 CÂU</span></div>
+          <div class="tip"><span>✨</span><p>Trả lời đúng để con vật biến mất và nhận 1 điểm. Trả lời sai sẽ mất một trái tim.</p></div>
+          <div class="difficulty-note" id="difficulty-note">Chọn độ khó phù hợp. Chế độ Khó giới hạn 30 giây cho mỗi câu.</div>
+        </section>
+        <div class="side-sticker" aria-hidden="true"><span>🍌</span><div><strong>10 điểm tối đa</strong><small>Chinh phục đủ 10 câu!</small></div></div>
+      </aside>
+    </section>
+    <section class="pause-overlay" id="pause-overlay" aria-hidden="true" hidden>
+      <div class="pause-card" role="dialog" aria-modal="true" aria-labelledby="pause-title">
+        <button class="modal-close" id="close-menu" type="button" aria-label="Đóng menu">×</button>
+        <span class="pause-icon">⏸</span><p class="eyebrow">TẠM NGHỈ CHÚT NHA</p><h2 id="pause-title">Rừng vẫn chờ bạn!</h2>
+        <button class="menu-action menu-continue" id="resume-button" type="button">▶ <span>Tiếp tục chơi</span></button>
+        <button class="menu-action" id="menu-restart" type="button">↻ <span>Chơi lại</span></button>
+        <button class="menu-action menu-exit" id="exit-button" type="button">⌂ <span>Thoát về chọn màn</span></button>
+      </div>
+    </section>
+    <footer class="footer"><span>HỌC TOÁN • KHÁM PHÁ • VUI CHƠI</span><span>Rừng Xanh <b>●</b> Khu vực 01</span></footer>
+  </main>
+</body>
+</html>
